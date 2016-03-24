@@ -1,0 +1,14 @@
+{
+	"name": "facebook-instant-articles-rss",
+	"version": "0.0.1",
+	"description": "An API for submitting and retrieving an RSS feed for use with Facebook Instant Articles",
+	"private": true,
+	"main": "app.js",
+	"scripts": {
+		"start": "node app.js"
+	},
+	"author": "Patrick Wilver",
+	"license": "ISC",
+	"dependencies": {},
+	"devDependencies": {}
+}
