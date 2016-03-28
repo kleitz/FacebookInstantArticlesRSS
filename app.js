@@ -4,7 +4,8 @@ var path = require('path');
 
 // R O U T E S
 var routes = require('./routes/index');
-var articles = require('./routes/new-article');
+var articles = require('./routes/articles');
+var rss = require('./routes/rss-feed');
 
 var app = express();
 
@@ -26,3 +27,8 @@ app.use(cors(corsOptions));
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+// ROUTES
+app.use('/', routes);
+app.use('/article', articles);
+app.use('/rss', rss);
