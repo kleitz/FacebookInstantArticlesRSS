@@ -33,7 +33,6 @@ var app = {
 		},
 
 		postBlogContents: function(post) {
-			console.log(post.featured_image);
 		}
 	}
 
