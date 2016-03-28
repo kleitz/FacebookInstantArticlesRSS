@@ -1,32 +1,42 @@
+// 4022461808
+
 var app = {
-	init: function() {
-		this.eventBindings();
-	},
+		init: function() {
+			this.eventBindings();
+		},
 
-	eventBindings: function() {
-		$('.post__submit').click(function(e) {
-			e.preventDefault();
+		eventBindings: function() {
+			$('.post__submit').click(function(e) {
+				e.preventDefault();
 
-			app.fetchBlogPostById();
-		});
-	},
+				app.fetchBlogPostById();
+			});
+		},
 
-	fetchBlogPostById: function() {
-		var blogId = $('.post__id').val();
+		fetchBlogPostById: function() {
+			var blogId = $('.post__id').val();
 
-		if (!blogId) {
-			console.log('nothing here');
-		} else {
+			// Change submit button text to indicate process
+			$('.post__submit').val('Submitting...');
+
 			$.get('//hs-wt-api.herokuapp.com/blog?id=' + blogId)
 			.fail(function() {
-				// 
+				$('.post__submit').val('Oops!');
+			})
+			.success(function() {
+				$('.post__submit').val('Posted!');
 			}).then(function(data) {
-				console.log(data);
+				// console.log(data.data[0]);
+				app.postBlogContents(data.data[0]);
+				// app.updatePageWithBlogInfo();
 			});
+		},
+
+		postBlogContents: function(post) {
+			console.log(post.featured_image);
 		}
 	}
-}
 
-$(function() {
-	app.init();
-});
+	$(function() {
+		app.init();
+	});
