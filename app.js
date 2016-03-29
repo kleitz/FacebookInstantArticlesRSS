@@ -32,3 +32,5 @@ app.set('view engine', 'ejs');
 app.use('/', routes);
 app.use('/article', articles);
 app.use('/rss', rss);
+
+app.listen(8080);
