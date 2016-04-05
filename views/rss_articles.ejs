@@ -1,0 +1,43 @@
+<% items.forEach(function(item){ %>
+		<item>
+			<title><%= item.title %></title>
+			<link><%= item.canonical_url %></link>
+			<guid><%= item.guid %></guid>
+			<pubDate><%= item.publish_date %></pubDate>
+			<author><%= item.author %></author>
+			<description><%= item.meta_description %></description>
+			<content:encoded>
+				<![CDATA[
+				<!doctype html>
+				<html lang="en">
+					<head>
+						<meta charset="utf-8">
+						<link rel="canonical" href="<%= item.canonical_url %>">
+						<meta property="op:markup_version" content="v1.0">
+					</head>
+					<body>
+						<article>
+							<header>
+								<figure>
+									<img src="<%= item.featured_image %>" />
+								</figure>
+
+								<h1><%= item.title %></h1>
+								<address>
+									By <%= item.author %><br>
+									<%= item.publish_date %>
+								</address>
+							</header>
+
+							<%- item.post_body %>
+
+							<footer>
+							// Article footer goes here
+							</footer>
+						</article>
+					</body>
+				</html>
+				]]>
+			</content:encoded>
+		</item>
+<% }); %>
