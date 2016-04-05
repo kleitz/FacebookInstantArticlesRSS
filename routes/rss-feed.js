@@ -1,8 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
+var functions = require('../apiFunctions');
+
 // Retrieve data from database
-// Parse it in XML format
 // Show it on page (EJS)
 
 
@@ -10,7 +11,13 @@ var router = express.Router();
 // ======================
 
 router.get('/', function(req, res) {
-	// res.render('rss-feed');
+	functions.fetchRssFeedItems()
+		.then(function(items) {
+			res.locals = { items: items };
+			res.render('rss-feed');
+		}).catch(function(error) {
+			res.status(error.status).send(error.message);
+	});
 });
 
 module.exports = router;
