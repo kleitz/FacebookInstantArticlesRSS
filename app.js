@@ -11,7 +11,8 @@ var app = express();
 
 var whitelist = [
 	'http://blog.hubspot.com',
-	'https://blog.hubspot.com'
+	'https://blog.hubspot.com',
+	'http://www.hubspot.com'
 ];
 
 var corsOptions = {
